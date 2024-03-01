@@ -1,11 +1,11 @@
 {
   description = "My nix utility functions";
 
-  inputs = {};
+  inputs.nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
 
-  outputs = { ... }: 
+  outputs = { nixpkgs, ... }: 
   let
-    lib = import ./lib.nix;
+    lib = import ./lib.nix { inherit nixpkgs;};
   in
   {
     inherit lib;
